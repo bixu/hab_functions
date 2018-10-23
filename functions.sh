@@ -70,5 +70,5 @@ depart_member() {
     __hf_usage "${FUNCNAME[0]} <'member id'> <'ssh user@host'>"
     return 1
   fi
-  ${1} "sudo hab sup depart ${2}"
+  ${2} "sudo hab sup depart ${1}"
 }
