@@ -1,6 +1,7 @@
 #!/bin/sh
 
 CENSUS_ENDPOINT="http://localhost:9631/census"
+HAB_BINARY=hab
 
 # Helper function to display usage information
 __hf_usage() {
@@ -10,8 +11,8 @@ __hf_usage() {
 }
 
 hab_functions_setup() {
-  hab pkg install --binlink core/curl
-  hab pkg install --binlink core/jq-static
+  ${HAB_BINARY} pkg install --binlink core/curl
+  ${HAB_BINARY} pkg install --binlink core/jq-static
 }
 
 # Display service group leaders
@@ -70,5 +71,5 @@ depart_member() {
     __hf_usage "${FUNCNAME[0]} <'member id'> <'ssh user@host'>"
     return 1
   fi
-  ${2} "sudo hab sup depart ${1}"
+  ${2} "sudo ${HAB_BINARY} sup depart ${1}"
 }
